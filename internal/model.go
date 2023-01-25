@@ -1,4 +1,4 @@
-package catboostcapi
+package internal
 
 /*
 #cgo linux LDFLAGS: -lcatboostmodel

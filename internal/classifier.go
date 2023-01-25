@@ -1,4 +1,4 @@
-package catboostcpai
+package internal
 
 // Classifier is wrapper over model object that add methods for binary classification
 type Classifier struct {

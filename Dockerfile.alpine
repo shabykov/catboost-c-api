@@ -8,12 +8,12 @@ RUN echo "Platform=$TARGETPLATFORM"
 RUN echo "Catboost src=$CATBOOST_SRC"
 RUN echo "Catboost bin=$CATBOOST_BIN"
 
-COPY catboost $CATBOOST_SRC
+# COPY catboost $CATBOOST_SRC
 
 RUN mkdir -p $CATBOOST_BIN
 
 RUN apt-get update && apt-get install git libc6-dev -y && rm -rf /var/lib/apt/lists/* \ 
-	# && git clone -b v1.1.1 https://github.com/catboost/catboost.git $CATBOOST_SRC \
+	&& git clone -b v1.1.1 https://github.com/catboost/catboost.git $CATBOOST_SRC \
 	&& cd $CATBOOST_SRC/catboost/libs/model_interface \
 	&& ../../../ya make -r . \
 	&& cp libcatboostmodel.* c_api.* model_calcer_wrapper.h wrapped_calcer.h $CATBOOST_BIN/ \
